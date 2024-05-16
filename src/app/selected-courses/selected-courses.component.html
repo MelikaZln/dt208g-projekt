@@ -1,0 +1,44 @@
+
+<table>
+    <thead>
+      <tr id="rubrik">
+        <th (click)="sortTableBy('courseCode')" >Kod</th>
+        <th (click)="sortTableBy('courseName')">Kursnamn</th>
+        <th (click)="sortTableBy('points')">Poäng</th>
+        <th (click)="sortTableBy('subject')">Ämne</th>
+        <th>Kursplan</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="kurslist">
+      <tr *ngFor="let course of selectedCourses" class="trBody">
+        <td >{{ course.courseCode }}</td>
+        <td >{{ course.courseName }}</td>
+        <td >{{ course.points }}</td>
+        <td>{{ course.subject }}</td>
+        <td> <a href="{{course.syllabus}}">Kursplan</a> </td>
+        <td>          <div class="example-button-row">
+          <button mat-raised-button (click)="removeCourse(course)">Ta-bort</button>
+        </div></td>
+
+
+      </tr> 
+      <td id="totalPoints">Totala-poäng</td>
+      <td ></td>
+      <td ></td>
+      <td ></td>
+      <td></td>
+      <td class="total-points"> {{ getTotalPoints() }}</td>
+      <tr >
+        <td style="border-bottom: none ;" id="totalPoints" style="padding-left: 10px;">Antal-kurser</td>
+        <td style="border-bottom: none ;" ></td>
+        <td style="border-bottom: none ;"></td>
+        <td style="border-bottom: none ;"></td>
+        <td style="border-bottom: none ;"></td>
+        <td style="border-bottom: none ;" class="total-points">{{ selectedCourses.length }}</td>
+      </tr>
+    </tbody>
+    <tfoot style="border-bottom: none ;">  
+<td style="border-bottom: none ;"></td>
+    </tfoot>
+  </table>
